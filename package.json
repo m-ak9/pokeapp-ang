@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "tsc src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/m-ak9/pokeapp-ang/issues"
   },
-  "homepage": "https://github.com/m-ak9/pokeapp-ang#readme"
+  "homepage": "https://github.com/m-ak9/pokeapp-ang#readme",
+  "devDependencies": {
+    "typescript": "^4.2.3"
+  }
 }
