@@ -6,3 +6,7 @@ class Pokemon {
     }
 
 }
+
+// affiche la variable name de l'objet Pokemon
+let test = new Pokemon("yo");
+console.log(test.name)
