@@ -8,5 +8,5 @@ class Pokemon {
 }
 
 // affiche la variable name de l'objet Pokemon
-let test = new Pokemon("yo");
+let test = new Pokemon("Pikachu");
 console.log(test.name)
