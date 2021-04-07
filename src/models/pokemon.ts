@@ -36,15 +36,6 @@ export class Pokemon {
         return Math.floor(this.hp * 0.1618);
     }
 
-    // Méthode utiles
-    findFirstAttacker(ennemy: Pokemon): Pokemon {
-        if (this.speed >= ennemy.speed) {
-            return this;
-        } else {
-            return ennemy;
-        }
-    }
-
     toString(): string {
         return `\t-----${this.name.toUpperCase()}-----
         hp: ${this.hp}

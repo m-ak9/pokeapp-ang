@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc src/index.ts && node src/index.js",
-    "test": "jest",
-    "clean": "rm src/index.js"
+    "start": "npm run-script clean && npm run-script build && npm run-script run",
+    "build": "tsc",
+    "run": "node dist/index.js",
+    "clean": "rm -rf dist",
+    "test": "jest",,
   },
   "repository": {
     "type": "git",

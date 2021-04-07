@@ -1,4 +1,5 @@
 import {Pokemon} from "./models";
+import {findFirstAttacker} from "./pokemonUtils";
 
 // Créer 2 pokémon
 const pokemon1 = new Pokemon({
@@ -20,6 +21,6 @@ console.log(pokemon1.toString());
 console.log(pokemon2.toString());
 
 
-const firstPokemonToAttack = pokemon1.findFirstAttacker(pokemon2);
+const firstPokemonToAttack = findFirstAttacker(pokemon1, pokemon2);
 console.log(`If they decide to fight, the first attacker will be : ${firstPokemonToAttack.name}`)
 
