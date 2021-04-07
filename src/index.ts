@@ -1,12 +1,25 @@
-class Pokemon {
-    name: string;
+import {Pokemon} from "./models";
 
-    constructor(name: string) {
-        this.name = name;
-    }
+// Créer 2 pokémon
+const pokemon1 = new Pokemon({
+    name: "Pikatchoum",
+    hp: 150,
+    weight: 60,
+    attack: 34
+});
+const pokemon2 = new Pokemon({
+    name: "Carapouce",
+    hp: 144,
+    weight: 80,
+    attack: 34
+});
 
-}
+// Affiche les pokémons
+console.log(`Created Pokemon : `);
+console.log(pokemon1.toString());
+console.log(pokemon2.toString());
 
-// affiche la variable name de l'objet Pokemon
-let test = new Pokemon("Pikachu");
-console.log(test.name)
+
+const firstPokemonToAttack = pokemon1.findFirstAttacker(pokemon2);
+console.log(`If they decide to fight, the first attacker will be : ${firstPokemonToAttack.name}`)
+
