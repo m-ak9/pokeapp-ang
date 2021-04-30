@@ -39,19 +39,19 @@ export class Pokemon {
 
     // Méthode publique
 
-     fight(adversary: Pokemon): void {
+     async fight(adversary: Pokemon): Promise<void> {
          let PokemonMove;
          let damage;
 
          PokemonMove = this.moves[Math.floor(Math.random() * this.moves.length)];
          console.log(`Fight begins !${EOL} ${this.name} attack with ${PokemonMove.name}.`);
          if (PokemonMove.special) {
-             damage = this.attack * 1.6;
-             console.log(`${adversary.name} loose ${damage}`);
+             damage = Math.floor(this.attack * 1.6);
+             console.log(`${adversary.name} loose ${damage} hp.`);
              adversary.hp -= damage;
          } else {
-             damage = this.attack;
-             console.log(`${adversary.name} loose ${damage}`);
+             damage = Math.floor(this.attack);
+             console.log(`${adversary.name} loose ${damage} hp.`);
              adversary.hp -= damage;
          };
      }
@@ -72,7 +72,7 @@ export interface IMoves {
     special: boolean;
 }
 
-class Moves{
+export class Moves{
     name: string;
     special: boolean;
 
@@ -81,3 +81,5 @@ class Moves{
         this.special = props.special;
     }
 }
+
+export default Pokemon;

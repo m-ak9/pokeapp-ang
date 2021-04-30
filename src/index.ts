@@ -1,5 +1,5 @@
 import {Pokemon} from "./models";
-import {findFirstAttacker} from "./pokemonUtils";
+import {findFirstAttacker, launchFight, mainLoop} from "./pokemonUtils";
 
 // Créer 2 pokémon
 const pokemon1 = new Pokemon({name: "Pikatchoum",
@@ -42,11 +42,17 @@ const pokemon2 = new Pokemon({name: "Carapouce",
         }
     ]
 });
-
 // Affiche les pokémons
 console.log(`Created Pokemon : `);
 console.log(pokemon1.toString());
 console.log(pokemon2.toString());
+
+mainLoop(pokemon1,pokemon2);
+
+
+
+
+
 
 
 
