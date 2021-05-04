@@ -44,7 +44,7 @@ export class Pokemon {
          let damage;
 
          PokemonMove = this.moves[Math.floor(Math.random() * this.moves.length)];
-         console.log(`Fight begins !${EOL} ${this.name} attack with ${PokemonMove.name}.`);
+         console.log(`${this.name} attack with ${PokemonMove.name}.`);
          if (PokemonMove.special) {
              damage = Math.floor(this.attack * 1.6);
              console.log(`${adversary.name} loose ${damage} hp.`);
