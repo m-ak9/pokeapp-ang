@@ -1,46 +1,62 @@
 import {Pokemon} from "./models";
+import {rejects, throws} from "assert";
+import any = jasmine.any;
 
 
-export async function mainLoop(pokemon1: Pokemon, pokemon2: Pokemon): Promise<void> {
-    const fighters = await findFirstAttacker(pokemon1,pokemon2)
-
-    if (fighters) {
-        await launchFight(fighters[0], fighters[1])
+export async function mainLoop(pokemons: Pokemon[] | null): Promise<void> {
+    if (pokemons) {
+        //combat 1v1
+        if (pokemons[0].hp > 0 || pokemons[1].hp > 0) {
+            pokemons[0].fight(pokemons[1]);
+            pokemons[1].fight(pokemons[0]);
+                if (pokemonIsDead(pokemons)) {
+                    return ;
+                } else {
+                return mainLoop(pokemons);
+                }
+        }
+    }
     }
 
-}
+    export async function findFirstAttacker(pokemons: Pokemon[]): Promise<Pokemon[] | null> {
+        if (pokemons[0].speed >= pokemons[1].speed) {
+            console.log(`First attacker is ${pokemons[0].name}`);
 
-export async function launchFight(pokemon1: Pokemon, pokemon2: Pokemon): Promise<void> {
-    while (pokemon1.hp > 0 || pokemon2.hp > 0) {
-        pokemon1.fight(pokemon2);
-        setInterval(function () {
-        }, 3000);
-        pokemon2.fight(pokemon1);
+        } else {
+
+            pokemons = [pokemons[1], pokemons[0]];
+            console.log(`First attacker is ${pokemons[1].name}`);
+        }
+
+        return pokemons;
+
     }
-    if (pokemon1.hp <= 0) {
-        console.log(pokemon1.name + " loose the fight !");
+
+    export function displayPokemons(pokemons: Pokemon[]) {
+        // Affiche les pokémons
+        console.log(`Created Pokemon : `);
+        pokemons.forEach(pokemon => {
+            console.log(pokemon.toString())
+        })
+    }
+
+    export function pokemonIsDead(pokemons: Pokemon[]) {
+    let deadAcc: number = 0;
+    pokemons.forEach(pokemon => {
+        if (pokemon.hp <= 0) {
+            console.log(pokemon.name + " loose the fight !");
+            deadAcc += 1;
+    }
+        });
+
+    if (deadAcc > 0){
+        return true;
     } else {
-        console.log(pokemon2.name + " loose the fight !")
-    }
-}
-
-export async function findFirstAttacker(firstPokemon: Pokemon, secondPokemon: Pokemon): Promise<Pokemon[] | null> {
-
-    const fighters: Pokemon[] = [firstPokemon];
-
-    if (firstPokemon.speed >= secondPokemon.speed) {
-        fighters.push(secondPokemon);
-        console.log(`First attacker is ${firstPokemon.name}`);
-
-    } else {
-        fighters.pop();
-        fighters.push(secondPokemon, firstPokemon);
-        console.log(`First attacker is ${secondPokemon.name}`);
+        return false;
     }
 
-    return fighters;
+    }
 
-}
 
 
 
